@@ -9,7 +9,6 @@ const MyRoutes = () => {
         <Route path="/" element={<Home/>}/>
         <Route path="/haqqimizda" element={<About/>}/>
         <Route path="*" element={<NotFound/>}/>
-
     </Routes>
   )
 }
