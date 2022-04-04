@@ -1,11 +1,9 @@
-import React from 'react'
+import HeroSlide from "../components/hero-slider/HeroSlide";
+import ProductList from "../components/product-list/ProductList";
 
 const Home = () => {
   return (
-    <div>
-      <h2>Home</h2>
-      <img width={100} height={100} src='/image/1.jpg' alt=''/>
-    </div>
-  )
-}
-export default Home
+    <ProductList/>
+  );
+};
+export default Home;
