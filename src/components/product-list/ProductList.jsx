@@ -7,6 +7,7 @@ const ProductList = ({loading,data}) => {
 
   return (
     <section className="product-list">
+      {data.length===0 && <p className="alert alert-warning">Mehsul tapilmadı</p>}
       {loading ? (
         <div className="container">
           <div className="row">

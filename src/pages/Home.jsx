@@ -19,6 +19,6 @@ const Home = () => {
   }, []);
   return (
     <ProductList loading={loading} data={products}/>
-  );
+    );
 };
 export default Home;

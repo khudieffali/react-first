@@ -28,17 +28,17 @@ const Products = () => {
       <div className="container">
         <div className="search-input my-4">
         <form onSubmit={submitHandle}>
-          <div class="input-group mb-3">
+          <div className="input-group mb-3">
             <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 placeholder="search title..."
                 aria-label="search title..."
                 aria-describedby="basic-addon2"
                 value={searchText}
                 onChange={e=>setSearchText(e.target.value)}
             />
-            <span class="input-group-text" id="basic-addon2">
+            <span className="input-group-text" id="basic-addon2">
               <i className="fas fa-search"></i>
             </span>
           </div>
