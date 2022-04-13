@@ -8,7 +8,7 @@ const Home = () => {
   
   useEffect(() => {
     const getProductList = () => {
-      fetch("https://fakestoreapi.com/products/")
+      fetch("/api/products/AZ")
         .then((c) => c.json())
         .then((c) => {
           setProducts(c);
@@ -17,6 +17,7 @@ const Home = () => {
     };
     getProductList();
   }, []);
+  console.log(products)
   return (
     <ProductList loading={loading} data={products}/>
     );

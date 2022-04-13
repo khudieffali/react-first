@@ -3,11 +3,10 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { Link } from "react-router-dom";
 import "./productList.scss";
-const ProductList = ({loading,data}) => {
-
+const ProductList = ({ loading, data }) => {
   return (
     <section className="product-list">
-      {data.length===0 && <p className="alert alert-warning">Mehsul tapilmadı</p>}
+      {/* {data.length===0 && <p className="alert alert-warning">Mehsul tapilmadı</p>} */}
       {loading ? (
         <div className="container">
           <div className="row">
@@ -21,7 +20,13 @@ const ProductList = ({loading,data}) => {
                       alt=""
                       src={pro.image}
                     />
-                    <h6 className="my-3">{pro.title}</h6>
+                    {pro.productRecords
+                      .filter((c) => c.languageKey === "AZ")
+                      .map((rec) => (
+                        <h6 key={rec.id} className="my-3">
+                          {rec.name}
+                        </h6>
+                      ))}
                     <p className="price">{pro.price} Azn</p>
                   </Link>
                 </div>

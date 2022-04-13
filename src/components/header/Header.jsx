@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { IntlProvider, FormattedMessage, FormattedNumber } from "react-intl";
 import "./header.scss";
-const Header = () => {
+const Header = ({num}) => {
   const localeLang = localStorage.getItem("myLang");
   const [bgColor, setBgColor] = useState("");
   const [lang, setLang] = useState(localeLang ? localeLang : "az-AZ");
+  console.log("Header re-render")
   const myMessage = {
     "az-AZ": {
       title: "Salam Gözəl",
@@ -27,8 +28,6 @@ const Header = () => {
       setBgColor("");
     }
   });
-  console.log("header yuklendi");
-
   return (
     <header className={`header ${bgColor}`}>
       <IntlProvider locale={lang} messages={myMessage[lang]}>
@@ -54,7 +53,7 @@ const Header = () => {
               </li>
               <li>
                 <Link to="/products">
-                  <i className="fas fa-shopping-basket" /> Shop
+                  <i className="fas fa-shopping-basket" /> Shop {num}
                 </Link>
               </li>
               <li>
@@ -68,4 +67,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default React.memo(Header);

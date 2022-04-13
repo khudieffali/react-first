@@ -9,7 +9,7 @@ const Products = () => {
     
     useEffect(() => {
       const getProductList = () => {
-        fetch("https://fakestoreapi.com/products/")
+        fetch("/api/products/AZ")
           .then((c) => c.json())
           .then((c) => {
             setProducts(c);

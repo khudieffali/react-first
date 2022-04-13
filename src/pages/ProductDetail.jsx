@@ -6,7 +6,7 @@ const ProductDetail = () => {
     const {id}=useParams()
     const [singlePro,setSinglePro]=useState(null);
     useEffect(() => {
-        fetch(`https://fakestoreapi.com/products/${id}`)
+        fetch(`/api/products/${id}/AZ`)
         .then(c=>c.json())
         .then(c=>setSinglePro(c))
     }, [id])
