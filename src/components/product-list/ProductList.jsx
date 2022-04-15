@@ -13,22 +13,21 @@ const ProductList = ({ loading, data }) => {
             {data.map((pro) => (
               <div className="col-lg-3" key={pro.id}>
                 <div className="product-item">
-                  <Link to={`/products/${pro.id}`}>
-                    <img
-                      style={{ height: "250px", objectFit: "contain" }}
-                      className="img-fluid"
-                      alt=""
-                      src={pro.image}
-                    />
-                    {pro.productRecords
-                      .filter((c) => c.languageKey === "AZ")
-                      .map((rec) => (
+                  <img
+                    style={{ height: "250px", objectFit: "contain" }}
+                    className="img-fluid"
+                    alt=""
+                    src={pro.image}
+                  />
+                  {pro.productRecords
+                    .map((rec) => (
+                      <Link to={`/products/${rec.languageKey}/${pro.id}`}>
                         <h6 key={rec.id} className="my-3">
                           {rec.name}
                         </h6>
-                      ))}
-                    <p className="price">{pro.price} Azn</p>
-                  </Link>
+                      </Link>
+                    ))}
+                  <p className="price">{pro.price} Azn</p>
                 </div>
               </div>
             ))}
