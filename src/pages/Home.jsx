@@ -1,25 +1,17 @@
 import { useEffect, useState } from "react";
+import { BASE_URL } from "../components/Api/ApiConfig";
 import HeroSlide from "../components/hero-slider/HeroSlide";
 import ProductList from "../components/product-list/ProductList";
-
+import { useLanguage } from "../contexts/LanguageContext";
+         
 const Home = () => {
-  const [products,setProducts]=useState([]);
-  const [loading, setLoading] = useState(false);
-  
-  useEffect(() => {
-    const getProductList = () => {
-      fetch("/api/products/AZ")
-        .then((c) => c.json())
-        .then((c) => {
-          setProducts(c);
-          setLoading(true);
-        });
-    };
-    getProductList();
-  }, []);
-  console.log(products)
+ 
+
   return (
-    <ProductList loading={loading} data={products}/>
+    <> 
+    <ProductList/>
+    </>
+ 
     );
 };
 export default Home;

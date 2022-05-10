@@ -5,11 +5,22 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
+import {BasketProvider} from './contexts/BasketContext';
+import { LanguageProvider } from './contexts/LanguageContext';
+import { ChakraProvider } from '@chakra-ui/react';
+import store from './pages/Redux/store';
+import { Provider } from 'react-redux';
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+    <Provider store={store}>
+    <LanguageProvider>
+      <ChakraProvider>
       <App />
+      </ChakraProvider>
+      </LanguageProvider>
+    </Provider>
     </BrowserRouter>
   </React.StrictMode>,
 );

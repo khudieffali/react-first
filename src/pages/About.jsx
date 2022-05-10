@@ -1,10 +1,9 @@
 import React from 'react'
+import AddProduct from '../components/add-product/AddProduct'
 
 const About = () => {
   return (
-    <div>
-      <h2>About</h2>
-    </div>
+   <AddProduct/>
   )
 }
 

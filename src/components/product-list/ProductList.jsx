@@ -1,62 +1,53 @@
 import React, { useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { getall } from "../../pages/Redux/Actions/ProductActions";
 import "./productList.scss";
-const ProductList = ({ loading, data }) => {
+const ProductList = () => {
+  const productList = useSelector(state => state.products)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getall({lang: "AZ"}))
+  }, [dispatch])
+  for (let i = 0; i < productList.products.length; i++) {
+    const element = productList.products[i];
+    console.log(element)
+  }
   return (
     <section className="product-list">
       {/* {data.length===0 && <p className="alert alert-warning">Mehsul tapilmadı</p>} */}
-      {loading ? (
-        <div className="container">
-          <div className="row">
-            {data.map((pro) => (
-              <div className="col-lg-3" key={pro.id}>
+      <div className="container">
+        <div className="row">
+       
+          {/* { 
+            productList.products.map(products => (
+              <div className="col-lg-3">
                 <div className="product-item">
-                  <img
-                    style={{ height: "250px", objectFit: "contain" }}
-                    className="img-fluid"
-                    alt=""
-                    src={pro.image}
-                  />
-                  {pro.productRecords
-                    .map((rec) => (
-                      <Link to={`/products/${rec.languageKey}/${pro.id}`}>
-                        <h6 key={rec.id} className="my-3">
-                          {rec.name}
-                        </h6>
-                      </Link>
+                <p>{products.price}</p>
+                    {products.productRecords.map(prorec => (
+
+                  <>
+           <Link to='/'>
+               <h6  className="my-3">
+                 {prorec.name}
+               </h6>
+                </Link>
+               <p>{prorec.description}</p>
+
+                  </>
                     ))}
-                  <p className="price">{pro.price} Azn</p>
+
+
                 </div>
               </div>
-            ))}
-          </div>
+            ))
+          } */}
+
         </div>
-      ) : (
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-3">
-              <Skeleton count={5} />
-            </div>
-            <div className="col-lg-3">
-              <Skeleton count={5} />
-            </div>
-            <div className="col-lg-3">
-              <Skeleton count={5} />
-            </div>
-            <div className="col-lg-3">
-              <Skeleton count={5} />
-            </div>
-            <div className="col-lg-3">
-              <Skeleton count={5} />
-            </div>
-            <div className="col-lg-3">
-              <Skeleton count={5} />
-            </div>
-          </div>
-        </div>
-      )}
+      </div>
+
     </section>
   );
 };
